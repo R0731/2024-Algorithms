@@ -15,7 +15,7 @@ public class Sum {
 			for(int r = 0; r < 100; r++) {
 				StringTokenizer st = new StringTokenizer(br.readLine());
 				
-				for(int c = 0; c < 100; c++) {
+				while()
 					table[r][c] = Integer.parseInt(st.nextToken());
 				}
 			System.out.println(Arrays.deepToString(table));
