@@ -4,5 +4,5 @@
 /**
  * 
  */
-module sw_academy {
+module algo_sw {
 }
