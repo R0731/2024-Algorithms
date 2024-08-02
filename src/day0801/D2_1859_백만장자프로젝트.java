@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class D2_1859_백만장자프로젝트 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
+		System.out.println(Long.MAX_VALUE);
 		
 		int T = sc.nextInt();
 		
