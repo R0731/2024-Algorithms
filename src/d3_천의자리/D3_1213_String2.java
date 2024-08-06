@@ -1,4 +1,4 @@
-package d3;
+package d3_천의자리;
 
 import java.util.Scanner;
 

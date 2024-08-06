@@ -1,6 +1,5 @@
-package d3;
+package d3_천의자리;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class D3_1209_Sum {
