@@ -3,6 +3,9 @@ package d2;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.StringTokenizer;
 
 public class D2_1983_조교의성적매기기 {
@@ -15,9 +18,9 @@ public class D2_1983_조교의성적매기기 {
 			StringTokenizer line = new StringTokenizer(br.readLine());
 			
 			int N = Integer.parseInt(line.nextToken());
-			int K = Integer.parseInt(line.nextToken());
+			int K = Integer.parseInt(line.nextToken())-1;
 			
-			double[] score = new double[N];
+			int[] score = new int[N];
 			
 			for(int i = 0; i < N; i++) {
 				StringTokenizer line2 = new StringTokenizer(br.readLine());
@@ -25,35 +28,36 @@ public class D2_1983_조교의성적매기기 {
 				int b = Integer.parseInt(line2.nextToken());
 				int c = Integer.parseInt(line2.nextToken());
 
-				score[i] = (a * 0.35) + (b * 0.45) + (c * 0.2);
+				score[i] = (a * 35) + (b * 45) + (c * 20); //계산하기 편하게 100곱해주기
 			}
 
 			//등수 구하기
-			int count = -1;
+			Integer[] count = new Integer[N];
+
+			//배열복사
+			for(int i = 0; i < N; i++){
+				count[i] = score[i];
+			}
+
+			//내림차순 정렬
+			Arrays.sort(count, Collections.reverseOrder());
+
+			int num = 0;
 
 			for(int i = 0; i < N; i++){
-				if(score[i] > score[K]){
-					count++;
+				if(count[i] == score[K]){
+					num = i;
+					break;
 				}
 			}
 
-			double grade = Math.ceil(count/10);
+			int ans = num / (N / 10);
 
-			String ans = switch (count) {
-                case 1 -> "A+";
-                case 2 -> "A0";
-                case 3 -> "A-";
-                case 4 -> "B+";
-                case 5 -> "B0";
-                case 6 -> "B-";
-                case 7 -> "C+";
-                case 8 -> "C0";
-                case 9 -> "C-";
-                default -> "D0";
-            };
+			String[] grades = {"A+", "A0", "A-", "B+", "B0", "B-", "C+", "C0", "C-", "D0"};
 
 
-            System.out.println("#" + tc + " " + ans);
+
+            System.out.println("#" + tc + " " + grades[ans]);
 		}
 		
 	}
