@@ -25,69 +25,54 @@ public class D3_1806_진기의최고급붕어빵 {
 
             int[] customer = new int[N];
 
-            for(int i = 0; i < N; i++){
+            for (int i = 0; i < N; i++) {
                 customer[i] = Integer.parseInt(line2.nextToken());
             }
 
-            for(int i = 1; i < customer.length; i++){
+            //손님 정렬
+            for (int i = 1; i < customer.length; i++) {
                 int data = customer[i];
                 int j;
-                for(j = i - 1; j >= 0 && customer[j] > data; j--){
+                for (j = i - 1; j >= 0 && customer[j] > data; j--) {
                     customer[j + 1] = customer[j];
                 }
                 customer[j + 1] = data;
             }
 
+            Queue<Integer> queue = new LinkedList<>();
 
-            int time = 1;
-            int fish = 0;
-            int cnumber = 0;
-
-            String ans = "Possible";
-
-            while(cnumber < N){
-                int c = customer[cnumber];
-                time++;
-                if((time % M) == 0) {
-                  fish += K;
-                }
-                if(time >= c && fish < 1){
-                    ans = "Impossible";
-                    break;
-                }else if(time == c) {
-                    fish--;
-                    cnumber++;
-                }
+            for (int i = 0; i < customer.length; i++) {
+                queue.add(customer[i]);
             }
 
 
+            int time = 0;
+            int fish = 0;
 
-//            int time = 1;
-//            int fish = 0;
-//            int ctime = 1;
-//            String ans = "Possible";
-//
-//            while(!customer.isEmpty()){
-//                int c = customer.peek();
-//                time++;
-//                ctime++;
-//                if((time % M) == 0) {
-//                    fish += K;
-//                }
-//
-//                if(ctime == c && fish < 1){
-//                    ans = "Impossible";
-//                    break;
-//                }else if(ctime == c){
-//                    customer.poll();
-//                    fish--;
-//                    ctime = 0;
-//                }
-//
-//            }
+            String ans = "Possible";
+
+            while (!queue.isEmpty()) {
+                int c = queue.peek();
+                while (time < c) {
+                    time++;
+                    if ((time % M) == 0) {
+                        fish += K;
+                    }
+                }
+
+                if (fish < 1) {
+                    ans = "Impossible";
+                    break;
+                }
+                fish--;
+                queue.poll();
+            }
 
             System.out.println("#" + tc + " " + ans);
+
         }
+
+
     }
 }
 
