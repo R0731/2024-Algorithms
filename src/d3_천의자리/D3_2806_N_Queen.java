@@ -28,7 +28,5 @@ public class D3_2806_N_Queen {
         }
     }
 
-    static boolean chess (int r, int c){
-        if()
-    }
+
 }
