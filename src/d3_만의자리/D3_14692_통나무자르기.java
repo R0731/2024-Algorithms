@@ -1,0 +1,24 @@
+package d3_만의자리;
+
+import java.util.Scanner;
+
+public class D3_14692_통나무자르기 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int T = sc.nextInt();
+
+        for(int tc = 1; tc <= T; tc++){
+            int N = sc.nextInt();
+
+            String ans = "Alice";
+
+            if(N % 2 == 1)
+                ans = "Bob";
+
+
+            System.out.println("#" + tc + " " + ans);
+        }
+
+    }
+}
