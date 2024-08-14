@@ -76,7 +76,7 @@ public class D3_1493_수의새로운연산 {
 //            System.out.println(r1 + " " + c1);
 //            System.out.println(r2 + " " + c2);
 
-            System.out.println("#" + tc + " " + ans);
+ //           System.out.println("#" + tc + " " + ans);
         }
 
     }
