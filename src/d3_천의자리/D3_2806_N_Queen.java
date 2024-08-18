@@ -5,6 +5,36 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class D3_2806_N_Queen {
+
+    static int N;
+    static int[] chess;
+    static int count;
+
+    static void dfs(int depth){
+        if(depth == N){
+            count++;
+            return;
+        }
+
+        for(int i = 0; i < N; i++){
+            chess[depth] = i;
+            if(possible(depth)){
+                dfs(depth+1);
+            }
+        }
+    }
+
+    static boolean possible(int col){
+        for(int i = 0; i < col; i++){
+            if(chess[i] == chess[col]){
+                return false;
+            }else if(Math.abs(col - i) == Math.abs(chess[col] - chess[i])){
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -12,21 +42,13 @@ public class D3_2806_N_Queen {
 
         for (int tc = 1; tc <= T; tc++) {
 
-            int N = Integer.parseInt(br.readLine());
+            N = Integer.parseInt(br.readLine());
 
-            int[][] nemo = new int[N][N];
+            chess = new int[N];
 
-            for(int i = 0; i < N; i++){
-                for(int j = 0; j < N; j++){
+            dfs(0);
 
-
-                }
-            }
-
-
-            System.out.println("#" + tc + " ");
+            System.out.println("#" + tc + " " + count);
         }
     }
-
-
 }
