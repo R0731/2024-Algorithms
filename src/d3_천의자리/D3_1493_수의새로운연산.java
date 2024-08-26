@@ -8,7 +8,7 @@ public class D3_1493_수의새로운연산 {
 
         int T = sc.nextInt();
 
-        for(int tc = 1; tc <= T; tc++){
+        for(int tc = 1; tc <= T; tc++) {
             int p = sc.nextInt();
             int q = sc.nextInt();
 
@@ -18,45 +18,40 @@ public class D3_1493_수의새로운연산 {
             int r = 1;
             int c = 1;
 
-            int[] new = 
+            int a = 0;
+            int b = 0;
 
-            while((count != p) || (count != q)){
-                if(r == 1){
+            int big = 0;
+
+            if (p > q) {
+                big = p;
+            } else {
+                big = q;
+            }
+
+            while (count != (big + 1)) {
+                if (count == p) {
+                    a += r;
+                    b += c;
+                }
+
+                if (count == q) {
+                    a += r;
+                    b += c;
+                }
+
+                if (r == 1) {
                     maxR++;
                     r = maxR;
                     c = 1;
                     count++;
                 }
+
                 r--;
                 c++;
                 count++;
             }
 
-            int x = r;
-            int y = c;
-
-            count = 1;
-            maxR = 1;
-            r = 1;
-            c = 1;
-
-            while(count != q){
-                if(r == 1){
-                    maxR++;
-                    r = maxR;
-                    c = 1;
-                    count++;
-                }
-                r--;
-                c++;
-                count++;
-            }
-
-            int z = r;
-            int w = c;
-
-            int a = x + z;
-            int b = y + w;
 
             count = 1;
             maxR = 1;

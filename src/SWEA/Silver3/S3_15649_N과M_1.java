@@ -21,7 +21,6 @@ public class S3_15649_N과M_1 {
         nums = new int[N+1];
         visited = new boolean[N+1];
         for(int i = 1; i <= N; i++){
-
         }
 
         permute(nums, M);
