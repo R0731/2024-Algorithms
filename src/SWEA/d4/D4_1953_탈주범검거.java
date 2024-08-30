@@ -8,7 +8,7 @@ import java.util.StringTokenizer;
 public class D4_1953_탈주범검거 {
     static int N, M, R, C, L;
     static int[][] tunnelMap;
-    static int[][] check;
+    static boolean[][] check;
     //상 하 좌 우
     static int[] dr = {-1, 1, 0, 0};
     static int[] dc = {0, 0, -1, 1};
@@ -28,7 +28,7 @@ public class D4_1953_탈주범검거 {
             L = Integer.parseInt(line.nextToken());
 
             tunnelMap = new int[N][M];
-            check = new int[N][M];
+            check = new boolean[N][M];
 
             for (int r = 0; r < N; r++) {
                 StringTokenizer line2 = new StringTokenizer(br.readLine());
@@ -49,7 +49,8 @@ public class D4_1953_탈주범검거 {
         }
 
         if(tunnelMap[r][c] != 0){
-
+            check[r][c] = true;
+            move()
         }
     }
 }
