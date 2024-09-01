@@ -3,15 +3,18 @@ package SWEA.d4;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class D4_1953_탈주범검거 {
     static int N, M, R, C, L;
     static int[][] tunnelMap;
-    static boolean[][] check;
+    static boolean[][] visited;
     //상 하 좌 우
     static int[] dr = {-1, 1, 0, 0};
     static int[] dc = {0, 0, -1, 1};
+    static int[][] dir = {{}, {0, 1, 2, 3}, {0, 1}, {2, 3}, {0, 3}, {1, 3}, {1, 2}, {0, 2}};
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -28,7 +31,7 @@ public class D4_1953_탈주범검거 {
             L = Integer.parseInt(line.nextToken());
 
             tunnelMap = new int[N][M];
-            check = new boolean[N][M];
+            visited = new boolean[N][M];
 
             for (int r = 0; r < N; r++) {
                 StringTokenizer line2 = new StringTokenizer(br.readLine());
@@ -37,20 +40,58 @@ public class D4_1953_탈주범검거 {
                 }
             }
 
-            move(R, C, 0);
+            int count = move(R, C);
 
-            System.out.println("#" + tc + " ");
+            System.out.println("#" + tc + " " + count);
         }
     }
 
-    private static void move(int r, int c, int currentTime){
-        if(currentTime == L){
-            return;
+    private static int move(int startR, int startC){
+        Queue<int[]> queue = new LinkedList<>();
+        queue.add(new int[]{startR, startC, 1});
+        visited[startR][startC] = true;
+
+        int count = 1;
+
+        while(!queue.isEmpty()){
+            int[] idx = queue.poll();
+            int r = idx[0];
+            int c = idx[1];
+            int currentTime = idx[2];
+
+            if(currentTime >= L){
+                continue;
+            }
+
+            int n = tunnelMap[r][c];
+
+            for(int i = 0; i < dir[n].length; i++){
+                int d = dir[n][i];
+                int nr = r + dr[d];
+                int nc = c + dc[d];
+
+                if(nr >= 0 && nr < N && nc >= 0 && nc < M && !visited[nr][nc] && tunnelMap[nr][nc] != 0){
+                    int n2 = tunnelMap[nr][nc];
+                    if(possible(d, n2)){
+                        queue.add(new int[]{nr, nc, currentTime + 1});
+                        visited[nr][nc] = true;
+                        count++;
+                    }
+                }
+            }
         }
 
-        if(tunnelMap[r][c] != 0){
-            check[r][c] = true;
-            move()
+        return count;
+
+    }
+
+    private static  boolean possible(int direction, int n){
+        switch (direction){
+            case 0 : return n == 1 || n == 2 || n == 5 || n == 6; //상
+            case 1 : return n == 1 || n == 2 || n == 4 || n == 7; //하
+            case 2 : return n == 1 || n == 3 || n == 4 || n == 5; //좌
+            case 3 : return n == 1 || n == 3 || n == 6 || n == 7; //우
+            default: return false;
         }
     }
 }
