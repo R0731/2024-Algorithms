@@ -1,4 +1,4 @@
-package SWEA.d4_1231_중위순회;
+package SWEA.d4;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -31,7 +31,7 @@ public class D4_1231_중위순회 {
         }
     }
 
-    static void inorder(int root){
+    private static void inorder(int root){
         if(root > N){
             return;
         }
