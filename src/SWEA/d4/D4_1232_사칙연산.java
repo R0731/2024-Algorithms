@@ -1,4 +1,4 @@
-package SWEA.d4_1232_사칙연산;
+package SWEA.d4;
 
 
 import java.io.BufferedReader;
@@ -47,7 +47,7 @@ public class D4_1232_사칙연산 {
 
     }
 
-        static void postorder ( int root){
+        private static void postorder ( int root){
             if (root >= N + 1 || (tree[root] == null)) {
                 return;
             }
