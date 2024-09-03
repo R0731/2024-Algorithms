@@ -13,7 +13,7 @@ public class D4_1767_프로세서연결하기 {
     static int[][] map;
     static List<int[]> core;
     static int[] coreArr;
-    static int min, count;
+    static int min, maxCore;
     static int[] target;
 
     public static void main(String[] args) throws IOException {
@@ -26,7 +26,7 @@ public class D4_1767_프로세서연결하기 {
             N = Integer.parseInt(br.readLine());
             map = new int[N][N];
             min = 0;
-            count = 0;
+            maxCore = 0;
 
             core = new ArrayList<>();
 
@@ -56,7 +56,7 @@ public class D4_1767_프로세서연결하기 {
     private static void perm(int sidx){
         if(sidx == M){
 //            System.out.println(Arrays.toString(coreArr));
-//            move(0, 0);
+            connect(int[] coreArr, 0, 0);
             return;
         }
 
@@ -73,11 +73,24 @@ public class D4_1767_프로세서연결하기 {
         coreArr[j] = temp;
     }//swap
 
-//    private static void move(int idx, int currentSum){
+//    private static void connect(int[] coreArr, int idx, int currentSum){
+//        int count = 0;
+//
 //
 //        for(int i = 0; i < M; i++){
+//            int r = core.get(coreArr[i])[0];
+//            int c = core.get(coreArr[i])[1];
+//            if(r == 0 || r == N - 1 || c == 0 || c == N - 1){
+//                count++;
+//            }else{
+//                int[] arr = new int[]{r, (N - r), c, (N - c)};
+//                Arrays.sort(arr);
 //
+//                for(int j = 0; j < 4; j++){
+//                    possible(r, c);
+//                }
+//            }
 //        }
 //
+//        return;
 //    }
-}
