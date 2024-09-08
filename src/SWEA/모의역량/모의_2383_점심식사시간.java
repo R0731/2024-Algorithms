@@ -30,15 +30,6 @@ public class 모의_2383_점심식사시간 {
             this.distance = Math.abs(this.r - stairs[stair].r) + Math.abs(this.c - stairs[stair].c); //선택한 계단과의 거리
         }
 
-        @Override
-        public String toString() {
-            return "Person{" +
-                    "r=" + r +
-                    ", c=" + c +
-                    ", s1=" + s1 +
-                    ", s2=" + s2 +
-                    '}';
-        }
     }
 
     static int N; //맵의 크기 결정 변수
