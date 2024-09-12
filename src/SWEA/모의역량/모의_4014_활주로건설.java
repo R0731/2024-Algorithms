@@ -27,27 +27,27 @@ public class 모의_4014_활주로건설 {
                     map[r][c] = Integer.parseInt(line.nextToken());
                 }
             }
-            for(int i = 0; i < N; i++){
-                if(possibleRow(i)) ans++; //가로 탐색
-                if(possibleCol(i)) ans++; //세로 탐색
-            }
-            System.out.println("#" + tc + " " + ans);
+//            for(int i = 0; i < N; i++){
+//                if(possibleRow(i)) ans++; //가로 탐색
+//                if(possibleCol(i)) ans++; //세로 탐색
+//            }
+//            System.out.println("#" + tc + " " + ans);
         }//tc
     }//main
     
     //가로 탐색
-    private static boolean possibleRow(int row){
-        boolean[] slope = new boolean[N]; //경사로가 설치된 곳 체크
-        for(int c = 0; c < N - 1; c++){
-            if(map[row][c] == map[row][c + 1]) continue; //높이가 같음
-            if(Math.abs(map[row][c] - map[row][c + 1]) > 1) return false; //경사로 설치해도 비행 불가
-            if(map[row][c] - 1 == map[row][c + 1]){
-                for(int i = 1; i <= X; i++){
-
-                }
-            }
-        }
-    }//possibleRow
+//    private static boolean possibleRow(int row){
+//        boolean[] slope = new boolean[N]; //경사로가 설치된 곳 체크
+//        for(int c = 0; c < N - 1; c++){
+//            if(map[row][c] == map[row][c + 1]) continue; //높이가 같음
+//            if(Math.abs(map[row][c] - map[row][c + 1]) > 1) return false; //경사로 설치해도 비행 불가
+//            if(map[row][c] - 1 == map[row][c + 1]){
+//                for(int i = 1; i <= X; i++){
+//
+//                }
+//            }
+//        }
+//    }//possibleRow
 
     //세로 탐색
     private static void rowSearch(int r, int c, int height){
